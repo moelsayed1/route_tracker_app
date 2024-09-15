@@ -9,14 +9,22 @@ class GoogleMapView extends StatefulWidget {
 }
 
 class _GoogleMapViewState extends State<GoogleMapView> {
+
   late CameraPosition initialCameraPosition;
 
   @override
+  void initState() {
+    initialCameraPosition = const CameraPosition(
+      target: LatLng(0, 0),
+    );
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const GoogleMap(
-      initialCameraPosition: CameraPosition(
-        target: LatLng(0, 0),
-      ),
+    return GoogleMap(
+      zoomControlsEnabled: false,
+      initialCameraPosition: initialCameraPosition,
     );
   }
 }
